@@ -14,4 +14,7 @@ export class CreateNoteDto {
 
    @IsBoolean()
    deleteAtEndtime: boolean;
+
+   @IsString()
+   userId: string;
 }
