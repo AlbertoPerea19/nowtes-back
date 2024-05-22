@@ -26,6 +26,6 @@ export class AuthenticateUseCase {
     const payload = { username: user.username };
     const token = await this.jwtService.signAsync(payload);
 
-    return { token, username: user.username };
+    return { token, userId: user.id };
   }
 }
