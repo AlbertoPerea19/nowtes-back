@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { User } from "./user.entity";
 
 @Entity()
@@ -19,7 +19,10 @@ export class Note {
    priority: string;
 
    @Column()
-   deletedAtEndtime: boolean;
+   deadline: Date;
+
+   @UpdateDateColumn()
+   lastModification: Date;
 
    @Column()
    userId: string;
