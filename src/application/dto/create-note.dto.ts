@@ -1,4 +1,4 @@
-import { IsBoolean, IsString, MaxLength } from "class-validator";
+import { IsBoolean, IsDate, IsString, MaxLength } from "class-validator";
 
 export class CreateNoteDto {
    @IsString()
@@ -12,8 +12,8 @@ export class CreateNoteDto {
    @IsString()
    priority: string;
 
-   @IsBoolean()
-   deleteAtEndtime: boolean;
+   @IsDate()
+   deadline: Date;
 
    @IsString()
    userId: string;

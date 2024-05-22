@@ -17,6 +17,11 @@ export class NoteController {
     return this.noteService.findAll();
   }
 
+  @Get('user/:userId')
+  findAllByUserId(@Param('userId') userId: string){
+    return this.noteService.findAllByUserId(userId);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.noteService.findOne(id);

@@ -7,6 +7,7 @@ import { RemoveNoteUseCase } from 'src/application/use-cases/note/remove-note.us
 import { UpdateNoteUseCase } from 'src/application/use-cases/note/update-note.usercase';
 import { NoteRepository } from '../repositories/note.repository';
 import { CreateNoteDto } from 'src/application/dto/create-note.dto';
+import { FindAllByUserIDNoteUseCase } from 'src/application/use-cases/note/findAllByUserId-note.usecase';
 
 @Injectable()
 export class NoteService {
@@ -15,6 +16,7 @@ export class NoteService {
   private findOneNoteUseCase: FindOneNoteUseCase;
   private removeNoteUseCase: RemoveNoteUseCase;
   private updateNoteUseCase: UpdateNoteUseCase;
+  private findAllByUserIdUseCase: FindAllByUserIDNoteUseCase;
 
   constructor(private readonly noteRepository: NoteRepository) {
     this.createNoteUseCase = new CreateNoteUseCase(noteRepository);
@@ -22,6 +24,7 @@ export class NoteService {
     this.findOneNoteUseCase = new FindOneNoteUseCase(noteRepository);
     this.removeNoteUseCase = new RemoveNoteUseCase(noteRepository);
     this.updateNoteUseCase = new UpdateNoteUseCase(noteRepository);
+    this.findAllByUserIdUseCase= new FindAllByUserIDNoteUseCase(noteRepository);
   }
 
   async create(createNoteDto: CreateNoteDto) {
@@ -42,5 +45,9 @@ export class NoteService {
 
   async remove(id: string) {
     return await this.removeNoteUseCase.remove(id);
+  }
+
+  async findAllByUserId(userId: string){
+    return await this.findAllByUserIdUseCase.findAllByUserId(userId);
   }
 }

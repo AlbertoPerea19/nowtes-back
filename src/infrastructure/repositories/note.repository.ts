@@ -10,6 +10,10 @@ export class NoteRepository implements INoteRepository{
       @InjectRepository(Note)
       private noteRepository: Repository<Note>,
     ) {}
+
+   async findAllByUserId(userId: string): Promise<Note[]> {
+      return await this.noteRepository.find({where: {userId}});
+   }
     
    async findAll(): Promise<Note[]> {
       return await this.noteRepository.find();
